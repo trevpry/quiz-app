@@ -1,0 +1,169 @@
+// bower:scss
+// endbower
+$dark-blue: #000088;
+$light-blue: #81d2ff;
+$goldenrod: #facb5f;
+
+@mixin breakpoint ($point){
+  @if $point == monitor {
+    @media (max-width: 1600px) { @content; }
+  }
+  @if $point == tablet {
+    @media (max-width: 1250px) { @content; }
+  }
+  @if $point == smartphone {
+    @media (max-width: 650px) { @content; }
+  }
+}
+
+@mixin clean-links() {
+  a {
+    text-decoration: none;
+    &:visited {
+      text-decoration: none;
+    }
+  }
+}
+
+body {
+  background: $goldenrod;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+.quiz {
+  display: none;
+  width: 100%;
+  .instructions {
+    line-height: 50px;
+    @include breakpoint(tablet) { line-height: 40px };
+    @include breakpoint(smartphone) {
+      line-height: 20px;
+      font-size: 15px;
+    };
+    background: lightgrey;
+  }
+  .work-title {
+    padding: 20px;
+    font-size: 23px;
+    font-weight: bold;
+    @include breakpoint(smartphone) {
+      padding-top: 10px;
+      height: 40px;
+    };
+  }
+  .choices {
+    border: 1px solid lightgrey;
+    padding: 15px;
+    border-radius: 8px;
+
+    .column {
+      display: inline-block;
+      width: 48%;
+      @include breakpoint(tablet) {
+        font-size: 16px;
+      };
+      @include breakpoint(smartphone) {
+        display: block;
+        width: 100%;
+        font-size: 16px;
+      };
+      .selection {
+        display: block;
+        text-align: left;
+        input {
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+
+  .submit {
+    margin-top: 25px;
+  }
+
+  .progress {
+    text-align: left;
+    margin-top: 30px;
+    .icons {
+      font-size: 40px;
+      color: lightgrey;
+      .completed {
+        color: black;
+      }
+    }
+    .counter {
+      margin: 20px 0;
+      @include breakpoint(smartphone) {
+        text-align: center;
+        font-size: 16px;
+      };
+    }
+  }
+}
+
+.start {
+  @include clean-links()
+}
+
+.button {
+  background: $light-blue;
+  width: 300px;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: $dark-blue 2px 2px;
+  text-decoration: none;
+  &:hover {
+    background: $dark-blue;
+    color: $goldenrod;
+  }
+  &:active {
+    background: $goldenrod;
+    color: $dark-blue;
+  }
+
+  @include breakpoint(tablet) {
+    width: 250px;
+  };
+  @include breakpoint(smartphone) {
+    width: 200px;
+    font-size: 13px;
+  };
+}
+
+.hero-unit {
+  margin: 50px auto 0 auto;
+  width: 800px;
+  @include breakpoint(tablet) { width: 530px };
+  @include breakpoint(smartphone) {
+    width: 320px;
+    padding: 40px 30px;
+    margin-top: 20px;
+  }
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  background-color: #eee;
+  border-radius: 6px;
+  padding: 60px;
+  text-align: center;
+  h1 {
+    font-size: 60px;
+    @include breakpoint(tablet) { font-size: 45px };
+    @include breakpoint(smartphone) { font-size: 40px };
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  p {
+    font-size: 20px;
+    @include breakpoint(tablet) { font-size: 18px };
+    @include breakpoint(smartphone) { font-size: 15px };
+  }
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
